@@ -1988,16 +1988,21 @@ function computeTechnicalScore(metrics, item = {}) {
     (metrics.qiankunBull ? 2 : 0) +
     (metrics.breakout ? 3 : 0);
   const rsRating = metrics.rsRating ?? metrics.relativeStrength ?? 50;
-  const relativeScore = normalizeRange(rsRating, 1, 99, 18);
+  const weightedTrend = (trendScore / 25) * 20;
+  const weightedMomentum = (momentumScore / 20) * 15;
+  const weightedPosition = (positionScore / 15) * 10;
+  const weightedLongTerm = (longTermScore / 30) * 20;
+  const weightedSetup = (Math.min(8, setupScore) / 8) * 5;
+  const weightedRs = normalizeRange(rsRating, 1, 99, 30);
   const penalty = structuralPenalty(metrics, item);
-  const rawScore = trendScore + momentumScore + positionScore + longTermScore + Math.min(8, setupScore) + relativeScore - penalty;
+  const rawScore = weightedTrend + weightedMomentum + weightedPosition + weightedLongTerm + weightedSetup + weightedRs - penalty;
 
   return compressScore(rawScore, metrics, item);
 }
 
 function compressScore(rawScore, metrics, item) {
   const penalty = structuralPenalty(metrics, item);
-  let score = Math.round(rawScore * 0.86);
+  let score = Math.round(rawScore);
 
   if (score >= 96) {
     const pristine =
