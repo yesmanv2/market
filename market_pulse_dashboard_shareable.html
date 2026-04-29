@@ -1689,6 +1689,7 @@ const STATIC_TICKER_CATALOG = [
   ["ABNB", "Airbnb", "Consumer / Internet"], ["DASH", "DoorDash", "Consumer / Internet"], ["SHOP", "Shopify", "Consumer / Internet"],
   ["BABA", "Alibaba", "China ADR"], ["JD", "JD.com", "China ADR"], ["BIDU", "Baidu", "China ADR"], ["NIO", "NIO", "China ADR"],
   ["LI", "Li Auto", "China ADR"], ["XPEV", "XPeng", "China ADR"], ["TCOM", "Trip.com", "China ADR"], ["TME", "Tencent Music", "China ADR"],
+  ["TCHEY", "Tencent Holdings", "China OTC"], ["DIDIY", "DiDi Global", "China OTC"], ["LKNCY", "Luckin Coffee", "China OTC"],
   ["F", "Ford", "Autos"], ["GM", "General Motors", "Autos"], ["RIVN", "Rivian", "Autos"], ["LCID", "Lucid", "Autos"],
   ["BA", "Boeing", "Industrials"], ["CAT", "Caterpillar", "Industrials"], ["DE", "Deere", "Industrials"], ["HON", "Honeywell", "Industrials"],
   ["UNP", "Union Pacific", "Industrials"], ["UPS", "UPS", "Industrials"], ["FDX", "FedEx", "Industrials"], ["RTX", "RTX", "Industrials"],
@@ -1929,7 +1930,7 @@ function groupBias(group) {
 }
 
 function isStructurallyDamagedGroup(group, name = "") {
-  return /China ADR|Autos|Crypto/.test(group) || /Baidu|Alibaba|PDD|JD\.com|NIO|XPeng|Li Auto|Bilibili|Tencent Music/i.test(name);
+  return /China ADR|China OTC|Autos|Crypto/.test(group) || /Baidu|Alibaba|PDD|JD\.com|NIO|XPeng|Li Auto|Bilibili|Tencent Music|Tencent Holdings|DiDi|Luckin/i.test(name);
 }
 
 function computeTechnicalScore(metrics, item = {}) {
@@ -2028,7 +2029,7 @@ function inferBreakdownCount(metrics, item) {
 }
 
 function isChinaAdr(item) {
-  return item.group === "China ADR" || /Alibaba|Baidu|PDD|JD\.com|NIO|XPeng|Li Auto|Trip\.com|Tencent Music/i.test(item.name || "");
+  return item.group === "China ADR" || item.group === "China OTC" || /Alibaba|Baidu|PDD|JD\.com|NIO|XPeng|Li Auto|Trip\.com|Tencent Music|Tencent Holdings|DiDi|Luckin/i.test(item.name || "");
 }
 
 function normalizeRange(value, min, max, points) {
