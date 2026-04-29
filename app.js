@@ -272,12 +272,12 @@ function hashTicker(ticker) {
 function groupBias(group) {
   if (/Semiconductor|AI|Software|Mega Cap/.test(group)) return 3;
   if (/Energy|Defense|Power/.test(group)) return 1;
-  if (/China ADR|Autos|Crypto/.test(group)) return -3;
+  if (/Autos|Crypto/.test(group)) return -3;
   return 0;
 }
 
 function isStructurallyDamagedGroup(group, name = "") {
-  return /China ADR|China OTC|Autos|Crypto/.test(group) || /Baidu|Alibaba|PDD|JD\.com|NIO|XPeng|Li Auto|Bilibili|Tencent Music|Tencent Holdings|DiDi|Luckin/i.test(name);
+  return /Autos|Crypto/.test(group);
 }
 
 function computeTechnicalScore(metrics, item = {}) {
@@ -324,12 +324,10 @@ function compressScore(rawScore, metrics, item) {
       penalty === 0 &&
       (metrics.drawdownFromATH ?? 99) <= 12 &&
       (metrics.ema200Slope ?? 0) > 4 &&
-      (metrics.breakdownCount ?? 9) === 0 &&
-      !isChinaAdr(item);
+      (metrics.breakdownCount ?? 9) === 0;
     score = pristine ? Math.min(98, score) : 94;
   }
 
-  if (isChinaAdr(item)) score = Math.min(score, 72);
   return Math.max(0, Math.min(98, score));
 }
 
@@ -353,7 +351,6 @@ function structuralPenalty(metrics, item) {
   const breakdownCount = metrics.breakdownCount ?? inferBreakdownCount(metrics, item);
   let penalty = 0;
 
-  if (isChinaAdr(item)) penalty += 12;
   if (drawdownFromATH > 50) penalty += 10;
   if (drawdownFromATH > 70) penalty += 8;
   if (ema200Slope < -5) penalty += 8;
@@ -362,21 +359,15 @@ function structuralPenalty(metrics, item) {
 }
 
 function inferLongSlope(metrics, item) {
-  if (isChinaAdr(item)) return -8;
   return Math.max(-8, Math.min(12, (metrics.momentum3m ?? 0) / 2));
 }
 
 function inferBreakdownCount(metrics, item) {
-  if (isChinaAdr(item)) return 3;
   const drawdownFromATH = metrics.drawdownFromATH ?? (metrics.drawdownFromHigh ?? 0) * 2.5;
   if (drawdownFromATH > 70) return 4;
   if (drawdownFromATH > 50) return 3;
   if (drawdownFromATH > 35) return 2;
   return 0;
-}
-
-function isChinaAdr(item) {
-  return item.group === "China ADR" || item.group === "China OTC" || /Alibaba|Baidu|PDD|JD\.com|NIO|XPeng|Li Auto|Trip\.com|Tencent Music|Tencent Holdings|DiDi|Luckin/i.test(item.name || "");
 }
 
 function normalizeRange(value, min, max, points) {
@@ -868,7 +859,7 @@ function buildTechnicalNote(fund) {
   }
 
   const drawdownFromATH = metrics.drawdownFromATH ?? Math.min(90, (metrics.drawdownFromHigh ?? 10) * 2.5);
-  if (drawdownFromATH > 55 || isChinaAdr(fund)) {
+  if (drawdownFromATH > 55) {
     notes.push("长期结构受损");
   }
 

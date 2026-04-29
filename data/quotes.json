@@ -1173,5 +1173,36 @@
     "monthChange": -1.93,
     "source": "Yahoo chart API",
     "asOf": "latest close"
+  },
+  "TME": {
+    "previousClose": 9.19,
+    "metrics": {
+      "price": 9.19,
+      "ema20": 9.7814,
+      "ema50": 11.4327,
+      "ema200": 15.7671,
+      "momentum1m": -2.55,
+      "momentum3m": -45.78,
+      "drawdownFromHigh": 46.66,
+      "drawdownFromATH": 65.14,
+      "ema200Slope": -8.54,
+      "breakdownCount": 1,
+      "volatility": 66.63,
+      "macdHist": 0.1295,
+      "macd": -0.5425,
+      "macdSignal": -0.672,
+      "rsi": 45.45,
+      "kdjK": 13.11,
+      "kdjD": 16.09,
+      "bollPosition": 0.296,
+      "gmmaBull": false,
+      "qiankunBull": false,
+      "breakout": false,
+      "relativeStrength": 0
+    },
+    "weekChange": -4.47,
+    "monthChange": -2.55,
+    "source": "Nasdaq historical API",
+    "asOf": "04/28/2026"
   }
 }
