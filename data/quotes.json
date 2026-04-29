@@ -1110,7 +1110,9 @@
     "weekChange": -7.0,
     "monthChange": -2.64,
     "source": "Yahoo chart API",
-    "asOf": "latest close"
+    "asOf": "latest close",
+    "scoreOverride": 12,
+    "overrideReason": "manual risk adjustment for Tencent OTC alias TCHEY/TCEHY"
   },
   "DIDIY": {
     "previousClose": 3.7,

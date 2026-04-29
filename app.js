@@ -164,7 +164,10 @@ async function init() {
 
 function normalizeScores() {
   [...state.data.indexes, ...state.data.sectors, ...state.data.funds].forEach((item) => {
-    if (item.metrics) {
+    const override = state.quotes[item.ticker]?.scoreOverride;
+    if (typeof override === "number") {
+      item.score = override;
+    } else if (item.metrics) {
       item.score = computeTechnicalScore(item.metrics, item);
     }
   });
