@@ -110,7 +110,6 @@ const STATIC_TICKER_CATALOG = [
 ];
 
 const els = {
-  dataStatus: document.querySelector("#dataStatus"),
   scoreLegend: document.querySelector("#scoreLegend"),
   indexGrid: document.querySelector("#indexGrid"),
   sectorList: document.querySelector("#sectorList"),
@@ -156,10 +155,8 @@ async function init() {
     mergeStaticCatalog();
     applyQuotes();
     normalizeScores();
-    setStatus(`Live · ${formatNow()}`, "ready");
     render();
   } catch (error) {
-    setStatus("Data load failed. Serve this folder over HTTP.", "error");
     console.error(error);
   }
 }
@@ -465,11 +462,6 @@ function renderViewTabs() {
   els.views.forEach((view) => {
     view.classList.toggle("active", view.dataset.view === state.activeView);
   });
-}
-
-function setStatus(text, type) {
-  els.dataStatus.className = `live-status ${type}`;
-  els.dataStatus.innerHTML = `<span class="status-dot"></span><span>${text}</span>`;
 }
 
 function renderLegend() {
@@ -812,10 +804,9 @@ function renderFunds() {
       return `
         <tr>
           <td class="ticker">${fund.ticker}</td>
-          <td><div>${fund.name}</div><div class="muted">${fund.category}</div></td>
+          <td>${formatScoreCell(fund, color)}</td>
           <td>${fund.group}</td>
           <td>${fund.leverage}</td>
-          <td>${formatScoreCell(fund, color)}</td>
           <td class="${fund.weekChange >= 0 ? "positive" : "negative"}">${formatMaybePercent(fund.weekChange)}</td>
           <td class="${fund.monthChange >= 0 ? "positive" : "negative"}">${formatMaybePercent(fund.monthChange)}</td>
           <td>${formatMaybePrice(fund.previousClose)}</td>

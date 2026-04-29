@@ -846,7 +846,8 @@ th {
 
 .brand-owner {
   font-size: 12px;
-  color: var(--muted);
+  color: #16a34a !important;
+  font-weight: 800;
   letter-spacing: 0.02em;
 }
 
@@ -1488,6 +1489,63 @@ td {
   padding-top: 16px;
 }
 
+.fund-table {
+  min-width: 760px;
+}
+
+@media (max-width: 640px) {
+  .breadth-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .breadth-stats article {
+    padding: 8px 6px;
+    border-radius: 9px;
+  }
+
+  .breadth-stats span {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  .breadth-stats strong {
+    margin-top: 4px;
+    font-size: 14px;
+  }
+
+  .breadth-stats small {
+    font-size: 9px;
+  }
+
+  .fund-table {
+    min-width: 680px;
+  }
+
+  .fund-table th:first-child,
+  .fund-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--surface);
+    min-width: 64px;
+  }
+
+  .fund-table th:nth-child(2),
+  .fund-table td:nth-child(2) {
+    position: sticky;
+    left: 64px;
+    z-index: 3;
+    background: var(--surface);
+    min-width: 64px;
+  }
+
+  .fund-table th,
+  .fund-table td {
+    padding: 8px 8px;
+  }
+}
+
 </style>
   </head>
   <body data-theme="paper">
@@ -1498,16 +1556,12 @@ td {
           <h1>Market Pulse</h1>
           <p class="brand-owner">制作者：城中村女大学生</p>
         </div>
-        <div class="live-status" id="dataStatus">
-          <span class="status-dot"></span>
-          <span>Loading...</span>
-        </div>
       </header>
 
       <nav class="main-tabs" aria-label="Dashboard sections">
         <button type="button" data-view-tab="overview">总览</button>
         <button type="button" data-view-tab="breadth">市场广度</button>
-        <button type="button" data-view-tab="watchlist">重点代码</button>
+        <button type="button" data-view-tab="watchlist">重点标的</button>
         <button type="button" data-view-tab="commentary">点评</button>
       </nav>
 
@@ -1549,7 +1603,7 @@ td {
 
       <section class="view" data-view="watchlist">
         <section class="section-heading">
-          <p class="eyebrow">重点代码</p>
+          <p class="eyebrow">重点标的</p>
           <div class="tabs" id="fundTabs"></div>
         </section>
         <section class="ticker-search">
@@ -1562,10 +1616,9 @@ td {
             <thead>
               <tr>
                 <th data-sort="ticker">Ticker</th>
-                <th data-sort="name">Name</th>
+                <th data-sort="score">Score</th>
                 <th data-sort="group">Group</th>
                 <th data-sort="leverage">Lev</th>
-                <th data-sort="score">Score</th>
                 <th data-sort="weekChange">1W</th>
                 <th data-sort="monthChange">1M</th>
                 <th data-sort="previousClose">昨收</th>
@@ -1709,7 +1762,6 @@ const STATIC_TICKER_CATALOG = [
 ];
 
 const els = {
-  dataStatus: document.querySelector("#dataStatus"),
   scoreLegend: document.querySelector("#scoreLegend"),
   indexGrid: document.querySelector("#indexGrid"),
   sectorList: document.querySelector("#sectorList"),
@@ -1755,10 +1807,8 @@ async function init() {
     mergeStaticCatalog();
     applyQuotes();
     normalizeScores();
-    setStatus(`Live · ${formatNow()}`, "ready");
     render();
   } catch (error) {
-    setStatus("Data load failed. Serve this folder over HTTP.", "error");
     console.error(error);
   }
 }
@@ -2064,11 +2114,6 @@ function renderViewTabs() {
   els.views.forEach((view) => {
     view.classList.toggle("active", view.dataset.view === state.activeView);
   });
-}
-
-function setStatus(text, type) {
-  els.dataStatus.className = `live-status ${type}`;
-  els.dataStatus.innerHTML = `<span class="status-dot"></span><span>${text}</span>`;
 }
 
 function renderLegend() {
@@ -2411,10 +2456,9 @@ function renderFunds() {
       return `
         <tr>
           <td class="ticker">${fund.ticker}</td>
-          <td><div>${fund.name}</div><div class="muted">${fund.category}</div></td>
+          <td>${formatScoreCell(fund, color)}</td>
           <td>${fund.group}</td>
           <td>${fund.leverage}</td>
-          <td>${formatScoreCell(fund, color)}</td>
           <td class="${fund.weekChange >= 0 ? "positive" : "negative"}">${formatMaybePercent(fund.weekChange)}</td>
           <td class="${fund.monthChange >= 0 ? "positive" : "negative"}">${formatMaybePercent(fund.monthChange)}</td>
           <td>${formatMaybePrice(fund.previousClose)}</td>

@@ -839,7 +839,8 @@ th {
 
 .brand-owner {
   font-size: 12px;
-  color: var(--muted);
+  color: #16a34a !important;
+  font-weight: 800;
   letter-spacing: 0.02em;
 }
 
@@ -1479,4 +1480,61 @@ td {
 .commentary-section {
   margin-top: 20px;
   padding-top: 16px;
+}
+
+.fund-table {
+  min-width: 760px;
+}
+
+@media (max-width: 640px) {
+  .breadth-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .breadth-stats article {
+    padding: 8px 6px;
+    border-radius: 9px;
+  }
+
+  .breadth-stats span {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  .breadth-stats strong {
+    margin-top: 4px;
+    font-size: 14px;
+  }
+
+  .breadth-stats small {
+    font-size: 9px;
+  }
+
+  .fund-table {
+    min-width: 680px;
+  }
+
+  .fund-table th:first-child,
+  .fund-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--surface);
+    min-width: 64px;
+  }
+
+  .fund-table th:nth-child(2),
+  .fund-table td:nth-child(2) {
+    position: sticky;
+    left: 64px;
+    z-index: 3;
+    background: var(--surface);
+    min-width: 64px;
+  }
+
+  .fund-table th,
+  .fund-table td {
+    padding: 8px 8px;
+  }
 }
