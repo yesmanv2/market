@@ -37,7 +37,7 @@ const STATIC_TICKER_CATALOG = [
   ["ABNB", "Airbnb", "Consumer / Internet"], ["DASH", "DoorDash", "Consumer / Internet"], ["SHOP", "Shopify", "Consumer / Internet"],
   ["BABA", "Alibaba", "China ADR"], ["JD", "JD.com", "China ADR"], ["BIDU", "Baidu", "China ADR"], ["NIO", "NIO", "China ADR"],
   ["LI", "Li Auto", "China ADR"], ["XPEV", "XPeng", "China ADR"], ["TCOM", "Trip.com", "China ADR"], ["TME", "Tencent Music", "China ADR"],
-  ["TCHEY", "Tencent Holdings", "China OTC"], ["DIDIY", "DiDi Global", "China OTC"], ["LKNCY", "Luckin Coffee", "China OTC"],
+  ["TCEHY", "Tencent Holdings", "China OTC"], ["DIDIY", "DiDi Global", "China OTC"], ["LKNCY", "Luckin Coffee", "China OTC"],
   ["F", "Ford", "Autos"], ["GM", "General Motors", "Autos"], ["RIVN", "Rivian", "Autos"], ["LCID", "Lucid", "Autos"],
   ["BA", "Boeing", "Industrials"], ["CAT", "Caterpillar", "Industrials"], ["DE", "Deere", "Industrials"], ["HON", "Honeywell", "Industrials"],
   ["UNP", "Union Pacific", "Industrials"], ["UPS", "UPS", "Industrials"], ["FDX", "FedEx", "Industrials"], ["RTX", "RTX", "Industrials"],
@@ -178,8 +178,7 @@ function applyQuotes() {
     if (typeof quote?.weekChange === "number") item.weekChange = quote.weekChange;
     if (typeof quote?.monthChange === "number") item.monthChange = quote.monthChange;
     if (item.generated) {
-      item.metrics = quote?.metrics || item.syntheticMetrics || null;
-      item.estimatedScore = !quote?.metrics;
+      item.metrics = quote?.metrics || null;
       if (quote?.metrics) item.generated = false;
     }
   });
@@ -828,8 +827,8 @@ function buildTechnicalNote(fund) {
   if (fund.pending) {
     return "未接入行情源，接入后自动计算 EMA/MACD/RSI/BOLL 等技术分。";
   }
-  if (fund.estimatedScore) {
-    return "静态估算分；待接真实历史K线后校准。";
+  if (!fund.metrics) {
+    return "缺少真实历史K线，暂不计算技术分。";
   }
 
   const metrics = fund.metrics || {};
@@ -954,13 +953,15 @@ function matchesSearch(fund, query) {
 }
 
 function searchFunds(query) {
-  const exactTicker = state.data.funds.filter((fund) => fund.ticker === query);
+  const aliases = { TCHEY: "TCEHY" };
+  const normalizedQuery = aliases[query] || query;
+  const exactTicker = state.data.funds.filter((fund) => fund.ticker === normalizedQuery);
   if (exactTicker.length > 0) return exactTicker;
 
-  const tickerPrefix = state.data.funds.filter((fund) => fund.ticker.startsWith(query));
+  const tickerPrefix = state.data.funds.filter((fund) => fund.ticker.startsWith(normalizedQuery));
   if (tickerPrefix.length > 0) return tickerPrefix;
 
-  const tickerContains = state.data.funds.filter((fund) => fund.ticker.includes(query));
+  const tickerContains = state.data.funds.filter((fund) => fund.ticker.includes(normalizedQuery));
   if (tickerContains.length > 0) return tickerContains;
 
   return state.data.funds.filter((fund) => matchesSearch(fund, query)).slice(0, 50);
