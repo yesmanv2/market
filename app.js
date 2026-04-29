@@ -155,6 +155,7 @@ async function init() {
     }
     mergeStaticCatalog();
     applyQuotes();
+    assignRsRatings();
     normalizeScores();
     render();
   } catch (error) {
@@ -171,6 +172,29 @@ function normalizeScores() {
       item.score = computeTechnicalScore(item.metrics, item);
     }
   });
+}
+
+function assignRsRatings() {
+  const items = [...state.data.indexes, ...state.data.sectors, ...state.data.funds].filter((item) => item.metrics);
+  const ranked = items
+    .map((item) => ({
+      item,
+      raw: rsRawScore(item.metrics)
+    }))
+    .sort((a, b) => a.raw - b.raw);
+
+  const maxIndex = Math.max(1, ranked.length - 1);
+  ranked.forEach((entry, index) => {
+    entry.item.metrics.rsRating = Math.max(1, Math.min(99, Math.round(1 + (index / maxIndex) * 98)));
+  });
+}
+
+function rsRawScore(metrics) {
+  const oneMonth = metrics.momentum1m ?? 0;
+  const threeMonth = metrics.momentum3m ?? 0;
+  const longSlope = metrics.ema200Slope ?? 0;
+  const drawdownPenalty = Math.min(40, metrics.drawdownFromATH ?? metrics.drawdownFromHigh ?? 0);
+  return threeMonth * 0.5 + oneMonth * 0.3 + longSlope * 1.6 - drawdownPenalty * 0.25;
 }
 
 function applyQuotes() {
@@ -311,7 +335,8 @@ function computeTechnicalScore(metrics, item = {}) {
     (metrics.gmmaBull ? 3 : 0) +
     (metrics.qiankunBull ? 2 : 0) +
     (metrics.breakout ? 3 : 0);
-  const relativeScore = normalizeRange(metrics.relativeStrength ?? metrics.momentum3m * 3, 0, 100, 10);
+  const rsRating = metrics.rsRating ?? metrics.relativeStrength ?? 50;
+  const relativeScore = normalizeRange(rsRating, 1, 99, 18);
   const penalty = structuralPenalty(metrics, item);
   const rawScore = trendScore + momentumScore + positionScore + longTermScore + Math.min(8, setupScore) + relativeScore - penalty;
 
@@ -830,6 +855,9 @@ function buildTechnicalNote(fund) {
   const ema50 = metrics.ema50 ?? metrics.ma50;
   const ema200 = metrics.ema200 ?? metrics.ma200;
   const notes = [];
+  if (typeof metrics.rsRating === "number") {
+    notes.push(`RS ${Math.round(metrics.rsRating)}`);
+  }
   if (metrics.shortHistory) {
     notes.push(`历史样本较短(${metrics.historyDays}日)`);
   }
