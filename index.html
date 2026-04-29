@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Market Pulse Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-theme="paper">
+    <main class="page">
+      <header class="app-header">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-copy">
+          <h1>Market Pulse</h1>
+          <p class="brand-owner">制作者：城中村女大学生</p>
+        </div>
+        <div class="live-status" id="dataStatus">
+          <span class="status-dot"></span>
+          <span>Loading...</span>
+        </div>
+      </header>
+
+      <nav class="main-tabs" aria-label="Dashboard sections">
+        <button type="button" data-view-tab="overview">总览</button>
+        <button type="button" data-view-tab="breadth">市场广度</button>
+        <button type="button" data-view-tab="watchlist">重点代码</button>
+        <button type="button" data-view-tab="commentary">点评</button>
+      </nav>
+
+      <section class="view active" data-view="overview">
+        <section class="section-heading">
+          <p class="eyebrow">Major Indexes</p>
+          <div class="legend" id="scoreLegend"></div>
+        </section>
+        <div class="index-grid" id="indexGrid"></div>
+
+        <section class="section-heading section-gap">
+          <p class="eyebrow">Sectors (SPDR ETFs)</p>
+        </section>
+        <div class="sector-list" id="sectorList"></div>
+      </section>
+
+      <section class="view" data-view="breadth">
+        <article class="panel breadth-panel">
+          <div class="breadth-title">
+            <h2>S&P 500 Market Breadth</h2>
+            <p>Index price vs. % of constituents above their 50-day and 200-day moving averages</p>
+          </div>
+          <div class="zoom-row">
+            <span>Zoom</span>
+            <div class="range-buttons" id="rangeButtons"></div>
+            <p class="updated-line" id="breadthUpdated"></p>
+          </div>
+          <div class="chart-wrap">
+            <svg id="breadthChart" viewBox="0 0 1100 620" role="img" aria-label="Market breadth chart"></svg>
+          </div>
+          <div class="chart-legend">
+            <span><i class="line-blue"></i>S&P 500</span>
+            <span><i class="line-red"></i>% above MA50</span>
+            <span><i class="line-yellow"></i>% above MA200</span>
+          </div>
+          <div class="breadth-stats" id="breadthStats"></div>
+        </article>
+      </section>
+
+      <section class="view" data-view="watchlist">
+        <section class="section-heading">
+          <p class="eyebrow">重点代码</p>
+          <div class="tabs" id="fundTabs"></div>
+        </section>
+        <section class="ticker-search">
+          <label for="tickerSearch">搜索 ticker</label>
+          <input id="tickerSearch" type="search" placeholder="输入 ticker" autocomplete="off" />
+          <p id="searchNotice" class="hint"></p>
+        </section>
+        <div class="table-wrap">
+          <table class="fund-table">
+            <thead>
+              <tr>
+                <th data-sort="ticker">Ticker</th>
+                <th data-sort="name">Name</th>
+                <th data-sort="group">Group</th>
+                <th data-sort="leverage">Lev</th>
+                <th data-sort="score">Score</th>
+                <th data-sort="weekChange">1W</th>
+                <th data-sort="monthChange">1M</th>
+                <th data-sort="previousClose">昨收</th>
+                <th>点评</th>
+              </tr>
+            </thead>
+            <tbody id="fundRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="view" data-view="commentary">
+        <section class="section-heading">
+          <p class="eyebrow">Commentary</p>
+        </section>
+        <article class="commentary-article">
+          <div class="commentary-meta">
+            <span id="commentaryDate"></span>
+          </div>
+          <h2>宏观、业绩与资金面的综合观察</h2>
+          <div id="commentary"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

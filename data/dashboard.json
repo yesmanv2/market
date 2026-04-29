@@ -1,0 +1,591 @@
+{
+  "updatedAt": "4月29日 12:54",
+  "legend": [
+    { "label": "0-30 strong bearish", "color": "#ff5c73" },
+    { "label": "31-49 bearish", "color": "#ff9f43" },
+    { "label": "50-59 neutral", "color": "#f4c542" },
+    { "label": "60-79 bullish", "color": "#36c96f" },
+    { "label": "80-100 strong bullish", "color": "#2ecc71" }
+  ],
+  "indexes": [
+    {
+      "label": "S&P 500",
+      "ticker": "SPY",
+      "category": "Index ETF",
+      "score": 84,
+      "price": 711.69,
+      "change": -0.49,
+      "metrics": { "price": 711.69, "ma20": 700, "ma50": 680, "ma200": 630, "momentum1m": 6.5, "momentum3m": 12.0, "drawdownFromHigh": 1.2, "volatility": 16 },
+      "history": {
+        "weekly": [72, 74, 75, 77, 78, 81, 80, 82, 84, 83, 85, 84],
+        "daily": [48, 55, 63, 70, 72, 75, 78, 80, 82, 84, 83, 84]
+      }
+    },
+    {
+      "label": "Nasdaq 100",
+      "ticker": "QQQ",
+      "category": "Index ETF",
+      "score": 79,
+      "price": 443.18,
+      "change": 0.38,
+      "metrics": { "price": 443.18, "ma20": 435, "ma50": 420, "ma200": 385, "momentum1m": 6.3, "momentum3m": 15.0, "drawdownFromHigh": 2.0, "volatility": 22 },
+      "history": {
+        "weekly": [66, 68, 72, 73, 75, 77, 78, 79, 81, 80, 79, 79],
+        "daily": [51, 58, 65, 70, 75, 76, 77, 78, 80, 79, 78, 79]
+      }
+    },
+    {
+      "label": "Semiconductors",
+      "ticker": "SMH",
+      "category": "Sector ETF",
+      "score": 81,
+      "price": 224.91,
+      "change": 1.42,
+      "metrics": { "price": 224.91, "ma20": 218, "ma50": 205, "ma200": 178, "momentum1m": 10.4, "momentum3m": 22.0, "drawdownFromHigh": 3.4, "volatility": 28 },
+      "history": {
+        "weekly": [60, 66, 71, 75, 78, 80, 82, 84, 82, 81, 83, 81],
+        "daily": [43, 51, 60, 68, 72, 76, 80, 83, 84, 82, 81, 81]
+      }
+    }
+  ],
+  "sectors": [
+    {
+      "ticker": "XLK",
+      "name": "Technology",
+      "score": 0,
+      "note": "科技板块仍是成长主线，需关注估值和利率压力。",
+      "metrics": { "price": 228.4, "ema20": 222.1, "ema50": 213.8, "ema200": 188.4, "momentum1m": 8.8, "momentum3m": 19.5, "drawdownFromHigh": 3.2, "volatility": 23, "macdHist": 0.9, "macd": 3.2, "macdSignal": 2.3, "rsi": 64, "kdjK": 71, "kdjD": 60, "bollPosition": 0.76, "gmmaBull": true, "qiankunBull": true, "breakout": true, "relativeStrength": 91 },
+      "history": {
+        "weekly": [62, 66, 70, 74, 77, 79, 82, 84, 83, 85, 86, 86],
+        "daily": [55, 60, 65, 71, 76, 80, 84, 86, 85, 87, 86, 86]
+      }
+    },
+    {
+      "ticker": "XLC",
+      "name": "Communication Services",
+      "score": 0,
+      "note": "通信服务受大型平台股驱动，走势偏成长属性。",
+      "metrics": { "price": 96.2, "ema20": 94.1, "ema50": 90.3, "ema200": 79.8, "momentum1m": 6.5, "momentum3m": 16.2, "drawdownFromHigh": 4.1, "volatility": 21, "macdHist": 0.6, "macd": 2.1, "macdSignal": 1.5, "rsi": 61, "kdjK": 67, "kdjD": 57, "bollPosition": 0.7, "gmmaBull": true, "qiankunBull": true, "breakout": false, "relativeStrength": 82 },
+      "history": {
+        "weekly": [58, 61, 64, 67, 70, 73, 75, 77, 78, 79, 80, 80],
+        "daily": [52, 56, 60, 64, 69, 73, 76, 79, 80, 79, 80, 80]
+      }
+    },
+    {
+      "ticker": "XLI",
+      "name": "Industrials",
+      "score": 0,
+      "note": "工业板块受资本开支、基建和电气化主题支撑。",
+      "metrics": { "price": 133.7, "ema20": 131.6, "ema50": 126.5, "ema200": 114.2, "momentum1m": 5.7, "momentum3m": 13.8, "drawdownFromHigh": 2.7, "volatility": 18, "macdHist": 0.5, "macd": 1.8, "macdSignal": 1.3, "rsi": 59, "kdjK": 64, "kdjD": 55, "bollPosition": 0.68, "gmmaBull": true, "qiankunBull": true, "breakout": false, "relativeStrength": 76 },
+      "history": {
+        "weekly": [55, 58, 61, 64, 67, 70, 72, 73, 74, 75, 76, 76],
+        "daily": [50, 54, 58, 63, 67, 70, 73, 75, 76, 75, 76, 76]
+      }
+    },
+    {
+      "ticker": "XLF",
+      "name": "Financials",
+      "score": 0,
+      "note": "金融板块受利率曲线和信用风险影响较大。",
+      "metrics": { "price": 47.8, "ema20": 46.9, "ema50": 45.2, "ema200": 41.6, "momentum1m": 4.8, "momentum3m": 10.5, "drawdownFromHigh": 3.5, "volatility": 19, "macdHist": 0.4, "macd": 1.2, "macdSignal": 0.8, "rsi": 57, "kdjK": 61, "kdjD": 53, "bollPosition": 0.64, "gmmaBull": true, "qiankunBull": true, "breakout": false, "relativeStrength": 69 },
+      "history": {
+        "weekly": [51, 53, 56, 59, 62, 65, 67, 69, 70, 71, 72, 72],
+        "daily": [48, 51, 55, 59, 62, 66, 69, 70, 72, 71, 72, 72]
+      }
+    },
+    {
+      "ticker": "XLE",
+      "name": "Energy",
+      "score": 0,
+      "note": "能源板块更受油价与地缘因素驱动，和成长股节奏不同。",
+      "metrics": { "price": 94.3, "ema20": 92.8, "ema50": 91.1, "ema200": 88.5, "momentum1m": 3.9, "momentum3m": 8.4, "drawdownFromHigh": 5.2, "volatility": 24, "macdHist": 0.2, "macd": 0.9, "macdSignal": 0.7, "rsi": 54, "kdjK": 58, "kdjD": 52, "bollPosition": 0.58, "gmmaBull": true, "qiankunBull": false, "breakout": false, "relativeStrength": 62 },
+      "history": {
+        "weekly": [49, 51, 53, 56, 59, 61, 63, 64, 65, 64, 65, 65],
+        "daily": [45, 48, 51, 55, 59, 62, 64, 65, 63, 64, 65, 65]
+      }
+    },
+    {
+      "ticker": "XLV",
+      "name": "Health Care",
+      "score": 0,
+      "note": "医疗板块偏防御，若风险偏好下降会相对抗跌。",
+      "metrics": { "price": 149.6, "ema20": 148.2, "ema50": 146.7, "ema200": 141.5, "momentum1m": 2.8, "momentum3m": 6.2, "drawdownFromHigh": 4.0, "volatility": 16, "macdHist": 0.1, "macd": 0.5, "macdSignal": 0.4, "rsi": 53, "kdjK": 55, "kdjD": 51, "bollPosition": 0.55, "gmmaBull": true, "qiankunBull": false, "breakout": false, "relativeStrength": 55 },
+      "history": {
+        "weekly": [48, 50, 52, 55, 58, 60, 61, 62, 63, 62, 63, 63],
+        "daily": [45, 47, 50, 53, 56, 59, 61, 63, 62, 61, 62, 63]
+      }
+    },
+    {
+      "ticker": "XLY",
+      "name": "Consumer Discretionary",
+      "score": 0,
+      "note": "可选消费对就业、信贷和高端消费预期敏感。",
+      "metrics": { "price": 190.2, "ema20": 188.8, "ema50": 184.1, "ema200": 172.2, "momentum1m": 3.4, "momentum3m": 9.0, "drawdownFromHigh": 6.8, "volatility": 27, "macdHist": 0.2, "macd": 0.8, "macdSignal": 0.6, "rsi": 54, "kdjK": 56, "kdjD": 52, "bollPosition": 0.53, "gmmaBull": true, "qiankunBull": false, "breakout": false, "relativeStrength": 60 },
+      "history": {
+        "weekly": [45, 48, 50, 54, 57, 60, 62, 64, 63, 62, 63, 63],
+        "daily": [42, 45, 49, 53, 57, 60, 63, 64, 62, 61, 62, 63]
+      }
+    },
+    {
+      "ticker": "XLP",
+      "name": "Consumer Staples",
+      "score": 0,
+      "note": "必选消费偏防御，趋势通常慢于成长板块。",
+      "metrics": { "price": 79.4, "ema20": 79.0, "ema50": 78.3, "ema200": 76.8, "momentum1m": 1.5, "momentum3m": 4.0, "drawdownFromHigh": 3.8, "volatility": 12, "macdHist": 0.05, "macd": 0.2, "macdSignal": 0.15, "rsi": 52, "kdjK": 53, "kdjD": 50, "bollPosition": 0.52, "gmmaBull": true, "qiankunBull": false, "breakout": false, "relativeStrength": 46 },
+      "history": {
+        "weekly": [44, 46, 48, 51, 53, 55, 57, 58, 59, 58, 59, 60],
+        "daily": [42, 44, 47, 50, 53, 56, 58, 59, 58, 57, 59, 60]
+      }
+    },
+    {
+      "ticker": "XLU",
+      "name": "Utilities",
+      "score": 0,
+      "note": "公用事业受利率和电力需求主题共同影响。",
+      "metrics": { "price": 73.5, "ema20": 72.9, "ema50": 71.8, "ema200": 68.6, "momentum1m": 2.2, "momentum3m": 7.2, "drawdownFromHigh": 4.6, "volatility": 15, "macdHist": 0.1, "macd": 0.4, "macdSignal": 0.3, "rsi": 54, "kdjK": 56, "kdjD": 51, "bollPosition": 0.57, "gmmaBull": true, "qiankunBull": false, "breakout": false, "relativeStrength": 58 },
+      "history": {
+        "weekly": [43, 46, 49, 52, 56, 59, 61, 63, 62, 63, 64, 64],
+        "daily": [40, 44, 48, 52, 56, 60, 63, 64, 62, 63, 64, 64]
+      }
+    },
+    {
+      "ticker": "XLB",
+      "name": "Materials",
+      "score": 0,
+      "note": "材料板块偏周期，取决于制造业和美元方向。",
+      "metrics": { "price": 94.1, "ema20": 93.8, "ema50": 92.4, "ema200": 88.9, "momentum1m": 1.8, "momentum3m": 5.5, "drawdownFromHigh": 7.2, "volatility": 20, "macdHist": 0.05, "macd": 0.3, "macdSignal": 0.25, "rsi": 51, "kdjK": 52, "kdjD": 50, "bollPosition": 0.48, "gmmaBull": true, "qiankunBull": false, "breakout": false, "relativeStrength": 50 },
+      "history": {
+        "weekly": [40, 43, 46, 49, 52, 55, 57, 59, 60, 59, 60, 60],
+        "daily": [38, 41, 45, 49, 53, 56, 59, 60, 58, 59, 60, 60]
+      }
+    },
+    {
+      "ticker": "XLRE",
+      "name": "Real Estate",
+      "score": 0,
+      "note": "地产对利率最敏感，降息预期增强时弹性更明显。",
+      "metrics": { "price": 42.5, "ema20": 42.1, "ema50": 41.9, "ema200": 40.8, "momentum1m": 1.2, "momentum3m": 3.8, "drawdownFromHigh": 8.5, "volatility": 21, "macdHist": 0.0, "macd": 0.15, "macdSignal": 0.16, "rsi": 49, "kdjK": 49, "kdjD": 50, "bollPosition": 0.43, "gmmaBull": false, "qiankunBull": false, "breakout": false, "relativeStrength": 42 },
+      "history": {
+        "weekly": [35, 38, 42, 45, 48, 50, 52, 54, 55, 54, 55, 55],
+        "daily": [33, 36, 40, 44, 48, 51, 54, 55, 53, 54, 55, 55]
+      }
+    }
+  ],
+  "funds": [
+    {
+      "ticker": "SOXL",
+      "name": "Direxion Daily Semiconductor Bull 3X Shares",
+      "group": "Semiconductors",
+      "category": "Leveraged",
+      "leverage": "3x",
+      "score": 82,
+      "weekChange": 7.4,
+      "monthChange": 18.2,
+      "price": 46.12,
+      "metrics": { "price": 46.12, "ma20": 44, "ma50": 40, "ma200": 32, "momentum1m": 18.2, "momentum3m": 35.0, "drawdownFromHigh": 6.0, "volatility": 65 },
+      "signal": "趋势最强，但波动最高。"
+    },
+    {
+      "ticker": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "group": "Leveraged Tech",
+      "category": "Leveraged",
+      "leverage": "3x",
+      "score": 75,
+      "weekChange": 4.1,
+      "monthChange": 11.8,
+      "price": 63.45,
+      "metrics": { "price": 63.45, "ma20": 61, "ma50": 56, "ma200": 45, "momentum1m": 11.8, "momentum3m": 24.0, "drawdownFromHigh": 5.0, "volatility": 55 },
+      "signal": "偏多，但不适合追高。"
+    },
+    {
+      "ticker": "KORU",
+      "name": "Direxion Daily South Korea Bull 3X Shares",
+      "group": "Asia Country",
+      "category": "Leveraged",
+      "leverage": "3x",
+      "score": 54,
+      "weekChange": -1.8,
+      "monthChange": 3.2,
+      "price": 8.74,
+      "metrics": { "price": 8.74, "ma20": 8.5, "ma50": 8.2, "ma200": 7.2, "momentum1m": 3.2, "momentum3m": 9.5, "drawdownFromHigh": 8.0, "volatility": 70 },
+      "signal": "等待韩国 ETF 转强确认。"
+    },
+    {
+      "ticker": "EWY",
+      "name": "iShares MSCI South Korea ETF",
+      "group": "Asia Country",
+      "category": "Country ETF",
+      "leverage": "1x",
+      "score": 56,
+      "weekChange": -0.4,
+      "monthChange": 2.6,
+      "price": 62.31,
+      "metrics": { "price": 62.31, "ma20": 61, "ma50": 59, "ma200": 55, "momentum1m": 2.6, "momentum3m": 7.0, "drawdownFromHigh": 6.0, "volatility": 24 },
+      "signal": "中性筑底。"
+    },
+    {
+      "ticker": "EWJ",
+      "name": "iShares MSCI Japan ETF",
+      "group": "Asia Country",
+      "category": "Country ETF",
+      "leverage": "1x",
+      "score": 64,
+      "weekChange": 1.2,
+      "monthChange": 5.1,
+      "price": 72.4,
+      "metrics": { "price": 72.4, "ma20": 71, "ma50": 68.5, "ma200": 63, "momentum1m": 5.1, "momentum3m": 13.0, "drawdownFromHigh": 2.8, "volatility": 18 },
+      "signal": "相对稳健。"
+    },
+    {
+      "ticker": "EWT",
+      "name": "iShares MSCI Taiwan ETF",
+      "group": "Asia Country",
+      "category": "Country ETF",
+      "leverage": "1x",
+      "score": 68,
+      "weekChange": 2.8,
+      "monthChange": 7.6,
+      "price": 54.83,
+      "metrics": { "price": 54.83, "ma20": 53.2, "ma50": 51.8, "ma200": 47.5, "momentum1m": 7.6, "momentum3m": 15.0, "drawdownFromHigh": 5.5, "volatility": 24 },
+      "signal": "台湾方向相对领先。"
+    },
+    {
+      "ticker": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "group": "Leveraged Tech",
+      "category": "Benchmark",
+      "leverage": "1x",
+      "score": 79,
+      "weekChange": 1.9,
+      "monthChange": 6.3,
+      "price": 443.18,
+      "metrics": { "price": 443.18, "ma20": 435, "ma50": 420, "ma200": 385, "momentum1m": 6.3, "momentum3m": 15.0, "drawdownFromHigh": 2.0, "volatility": 22 },
+      "signal": "纳指基准向上。"
+    },
+    {
+      "ticker": "SMH",
+      "name": "VanEck Semiconductor ETF",
+      "group": "Semiconductors",
+      "category": "Benchmark",
+      "leverage": "1x",
+      "score": 81,
+      "weekChange": 3.5,
+      "monthChange": 10.4,
+      "price": 224.91,
+      "metrics": { "price": 224.91, "ma20": 218, "ma50": 205, "ma200": 178, "momentum1m": 10.4, "momentum3m": 22.0, "drawdownFromHigh": 3.4, "volatility": 28 },
+      "signal": "半导体基准强势。"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "group": "Semiconductors",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 3.9,
+      "monthChange": 12.6,
+      "price": 132.4,
+      "metrics": {
+        "price": 132.4,
+        "ema20": 126.5,
+        "ema50": 119.2,
+        "ema200": 101.8,
+        "momentum1m": 12.6,
+        "momentum3m": 28.0,
+        "drawdownFromHigh": 4.5,
+        "volatility": 38,
+        "macdHist": 1.4,
+        "macd": 4.2,
+        "macdSignal": 2.8,
+        "rsi": 66,
+        "kdjK": 74,
+        "kdjD": 61,
+        "bollPosition": 0.78,
+        "gmmaBull": true,
+        "qiankunBull": true,
+        "breakout": true,
+        "relativeStrength": 94
+      },
+      "signal": "AI 龙头强趋势，关注是否过热。"
+    },
+    {
+      "ticker": "SNDK",
+      "name": "SanDisk Corporation",
+      "group": "Memory / Storage",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 5.2,
+      "monthChange": 16.4,
+      "price": 74.8,
+      "metrics": {
+        "price": 74.8,
+        "ema20": 70.3,
+        "ema50": 65.9,
+        "ema200": 55.4,
+        "momentum1m": 16.4,
+        "momentum3m": 34.0,
+        "drawdownFromHigh": 5.8,
+        "volatility": 46,
+        "macdHist": 1.1,
+        "macd": 3.6,
+        "macdSignal": 2.5,
+        "rsi": 69,
+        "kdjK": 78,
+        "kdjD": 63,
+        "bollPosition": 0.82,
+        "gmmaBull": true,
+        "qiankunBull": true,
+        "breakout": true,
+        "relativeStrength": 90
+      },
+      "signal": "存储方向动量强，留意高波动回撤。"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "group": "Memory / Storage",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 2.7,
+      "monthChange": 9.8,
+      "price": 121.6,
+      "metrics": {
+        "price": 121.6,
+        "ema20": 117.2,
+        "ema50": 110.4,
+        "ema200": 96.1,
+        "momentum1m": 9.8,
+        "momentum3m": 24.5,
+        "drawdownFromHigh": 6.4,
+        "volatility": 42,
+        "macdHist": 0.8,
+        "macd": 2.9,
+        "macdSignal": 2.1,
+        "rsi": 63,
+        "kdjK": 69,
+        "kdjD": 58,
+        "bollPosition": 0.72,
+        "gmmaBull": true,
+        "qiankunBull": true,
+        "breakout": false,
+        "relativeStrength": 84
+      },
+      "signal": "HBM/存储链条强势，但略弱于 SNDK 样例。"
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "group": "Semiconductors",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 1.1,
+      "monthChange": 5.4,
+      "price": 158.2,
+      "metrics": {
+        "price": 158.2,
+        "ema20": 156.5,
+        "ema50": 150.1,
+        "ema200": 138.4,
+        "momentum1m": 5.4,
+        "momentum3m": 13.2,
+        "drawdownFromHigh": 10.5,
+        "volatility": 44,
+        "macdHist": 0.3,
+        "macd": 1.2,
+        "macdSignal": 0.9,
+        "rsi": 56,
+        "kdjK": 58,
+        "kdjD": 54,
+        "bollPosition": 0.58,
+        "gmmaBull": true,
+        "qiankunBull": false,
+        "breakout": false,
+        "relativeStrength": 68
+      },
+      "signal": "趋势仍在，但强度低于 NVDA/MU。"
+    },
+    {
+      "ticker": "PDD",
+      "name": "PDD Holdings",
+      "group": "China ADR",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": -2.8,
+      "monthChange": 4.6,
+      "price": 128.7,
+      "metrics": {
+        "price": 128.7,
+        "ema20": 130.1,
+        "ema50": 124.4,
+        "ema200": 118.2,
+        "momentum1m": 4.6,
+        "momentum3m": 9.4,
+        "drawdownFromHigh": 14.0,
+        "volatility": 48,
+        "macdHist": -0.2,
+        "macd": 0.8,
+        "macdSignal": 1.0,
+        "rsi": 49,
+        "kdjK": 46,
+        "kdjD": 52,
+        "bollPosition": 0.42,
+        "gmmaBull": false,
+        "qiankunBull": false,
+        "breakout": false,
+        "relativeStrength": 52
+      },
+      "signal": "短线跌破 EMA20，MACD 未确认转强。"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "group": "Mega Cap Tech",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 1.4,
+      "monthChange": 3.8,
+      "price": 196.2,
+      "metrics": { "price": 196.2, "ema20": 193.5, "ema50": 190.4, "ema200": 184.8, "momentum1m": 3.8, "momentum3m": 7.2, "drawdownFromHigh": 5.2, "volatility": 20, "macdHist": 0.2, "macd": 0.9, "macdSignal": 0.7, "rsi": 55, "kdjK": 57, "kdjD": 52, "bollPosition": 0.58, "gmmaBull": true, "qiankunBull": false, "breakout": false, "relativeStrength": 58 },
+      "signal": "温和多头，弹性不如半导体。"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "group": "Mega Cap Tech",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 2.1,
+      "monthChange": 7.5,
+      "price": 438.9,
+      "metrics": { "price": 438.9, "ema20": 430.2, "ema50": 416.8, "ema200": 382.4, "momentum1m": 7.5, "momentum3m": 16.0, "drawdownFromHigh": 3.0, "volatility": 22, "macdHist": 0.7, "macd": 2.4, "macdSignal": 1.7, "rsi": 62, "kdjK": 68, "kdjD": 56, "bollPosition": 0.73, "gmmaBull": true, "qiankunBull": true, "breakout": false, "relativeStrength": 82 },
+      "signal": "云和 AI 权重支撑，趋势健康。"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "group": "Mega Cap Tech",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 2.9,
+      "monthChange": 9.1,
+      "price": 512.6,
+      "metrics": { "price": 512.6, "ema20": 501.1, "ema50": 482.3, "ema200": 420.5, "momentum1m": 9.1, "momentum3m": 20.0, "drawdownFromHigh": 4.0, "volatility": 27, "macdHist": 0.9, "macd": 3.1, "macdSignal": 2.2, "rsi": 64, "kdjK": 70, "kdjD": 58, "bollPosition": 0.76, "gmmaBull": true, "qiankunBull": true, "breakout": true, "relativeStrength": 86 },
+      "signal": "平台股中趋势偏强，接近强势区。"
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "group": "Consumer / EV",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": -1.5,
+      "monthChange": 2.2,
+      "price": 178.4,
+      "metrics": { "price": 178.4, "ema20": 181.0, "ema50": 176.5, "ema200": 192.4, "momentum1m": 2.2, "momentum3m": -6.0, "drawdownFromHigh": 22.0, "volatility": 55, "macdHist": -0.4, "macd": -1.0, "macdSignal": -0.6, "rsi": 46, "kdjK": 44, "kdjD": 49, "bollPosition": 0.35, "gmmaBull": false, "qiankunBull": false, "breakout": false, "relativeStrength": 34 },
+      "signal": "仍在弱修复，均线结构不理想。"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "group": "Semiconductors",
+      "category": "Stock",
+      "leverage": "1x",
+      "score": 0,
+      "weekChange": 3.2,
+      "monthChange": 11.5,
+      "price": 1410.2,
+      "metrics": { "price": 1410.2, "ema20": 1360.0, "ema50": 1288.4, "ema200": 1080.5, "momentum1m": 11.5, "momentum3m": 28.0, "drawdownFromHigh": 3.8, "volatility": 34, "macdHist": 1.2, "macd": 5.5, "macdSignal": 4.3, "rsi": 67, "kdjK": 75, "kdjD": 62, "bollPosition": 0.8, "gmmaBull": true, "qiankunBull": true, "breakout": true, "relativeStrength": 92 },
+      "signal": "AI ASIC 逻辑强，技术面接近过热。"
+    }
+  ],
+  "breadth": {
+    "updatedAt": "4月29日 08:00",
+    "ranges": ["All", "10y", "5y", "3y", "2y", "1y", "YTD", "6m"],
+    "series": {
+      "6m": [
+        { "label": "Nov", "index": 665, "ma50": 48, "ma200": 62 },
+        { "label": "Dec", "index": 672, "ma50": 52, "ma200": 64 },
+        { "label": "Jan", "index": 684, "ma50": 70, "ma200": 70 },
+        { "label": "Feb", "index": 676, "ma50": 56, "ma200": 66 },
+        { "label": "Mar", "index": 650, "ma50": 31, "ma200": 45 },
+        { "label": "Apr", "index": 712, "ma50": 78, "ma200": 72 }
+      ],
+      "YTD": [
+        { "label": "Jan", "index": 684, "ma50": 70, "ma200": 70 },
+        { "label": "Feb", "index": 676, "ma50": 56, "ma200": 66 },
+        { "label": "Mar", "index": 650, "ma50": 31, "ma200": 45 },
+        { "label": "Apr", "index": 712, "ma50": 78, "ma200": 72 }
+      ],
+      "1y": [
+        { "label": "May", "index": 610, "ma50": 45, "ma200": 52 },
+        { "label": "Jul", "index": 635, "ma50": 58, "ma200": 57 },
+        { "label": "Sep", "index": 660, "ma50": 62, "ma200": 61 },
+        { "label": "Nov", "index": 665, "ma50": 48, "ma200": 62 },
+        { "label": "Jan", "index": 684, "ma50": 70, "ma200": 70 },
+        { "label": "Mar", "index": 650, "ma50": 31, "ma200": 45 },
+        { "label": "Apr", "index": 712, "ma50": 78, "ma200": 72 }
+      ],
+      "2y": [
+        { "label": "2024", "index": 520, "ma50": 44, "ma200": 49 },
+        { "label": "Q2", "index": 570, "ma50": 61, "ma200": 55 },
+        { "label": "Q3", "index": 625, "ma50": 58, "ma200": 60 },
+        { "label": "Q4", "index": 665, "ma50": 48, "ma200": 62 },
+        { "label": "2026", "index": 712, "ma50": 78, "ma200": 72 }
+      ],
+      "3y": [
+        { "label": "2023", "index": 430, "ma50": 38, "ma200": 42 },
+        { "label": "2024", "index": 520, "ma50": 44, "ma200": 49 },
+        { "label": "2025", "index": 665, "ma50": 58, "ma200": 62 },
+        { "label": "2026", "index": 712, "ma50": 78, "ma200": 72 }
+      ],
+      "5y": [
+        { "label": "2021", "index": 360, "ma50": 55, "ma200": 58 },
+        { "label": "2022", "index": 320, "ma50": 25, "ma200": 32 },
+        { "label": "2023", "index": 430, "ma50": 38, "ma200": 42 },
+        { "label": "2024", "index": 520, "ma50": 44, "ma200": 49 },
+        { "label": "2025", "index": 665, "ma50": 58, "ma200": 62 },
+        { "label": "2026", "index": 712, "ma50": 78, "ma200": 72 }
+      ],
+      "10y": [
+        { "label": "2016", "index": 210, "ma50": 52, "ma200": 56 },
+        { "label": "2018", "index": 260, "ma50": 48, "ma200": 50 },
+        { "label": "2020", "index": 330, "ma50": 62, "ma200": 58 },
+        { "label": "2022", "index": 320, "ma50": 25, "ma200": 32 },
+        { "label": "2024", "index": 520, "ma50": 44, "ma200": 49 },
+        { "label": "2026", "index": 712, "ma50": 78, "ma200": 72 }
+      ],
+      "All": [
+        { "label": "2014", "index": 180, "ma50": 50, "ma200": 54 },
+        { "label": "2016", "index": 210, "ma50": 52, "ma200": 56 },
+        { "label": "2018", "index": 260, "ma50": 48, "ma200": 50 },
+        { "label": "2020", "index": 330, "ma50": 62, "ma200": 58 },
+        { "label": "2022", "index": 320, "ma50": 25, "ma200": 32 },
+        { "label": "2024", "index": 520, "ma50": 44, "ma200": 49 },
+        { "label": "2026", "index": 712, "ma50": 78, "ma200": 72 }
+      ]
+    }
+  },
+  "commentary": [
+    {
+      "title": "一、宏观环境：风险偏好修复，但非无成本顺风",
+      "body": "当前权益市场的核心矛盾，已非\"反弹能否发生\"，而是反弹的持续性能否获得宏观条件的同步背书。长端利率下行、美元走弱、信用利差收窄——这三者共同构成成长股与高 beta ETF 估值修复的必要前提；TQQQ、SOXL 等杠杆产品在这一组合下率先受益。然而，一旦利率重新抬头或美元反弹，久期资产的估值压缩将再度上演，杠杆工具的回撤弹性亦会成倍放大。\n\n因此，价格结构的转强仅是必要条件，绝非充分条件。真正的顺风口，需要利率、美元、VIX 与信用利差四者同步确认，缺一不可。"
+    },
+    {
+      "title": "二、业绩季：半导体与 AI 链条须以收入兑现估值",
+      "body": "半导体板块的强势不能仅凭价格结构定性，根本问题在于业绩能否落地。NVDA、MU、SNDK、SMH 这条主线的关键变量，并非\"AI 叙事是否持续\"，而是数据中心收入规模、HBM/存储价格走势、毛利率水平、订单能见度及资本开支指引的修订方向。\n\n若财报季仅止于\"符合预期\"，而股价已提前透支乐观情绪，强势的技术面评分反而可能演变为兑现卖压；唯有业绩与指引双双上修，强趋势才具备基本面的真实支撑。技术面告诉我们资金正在流向何处，业绩则决定这条路能走多远。"
+    },
+    {
+      "title": "三、市场广度：龙头独涨 ≠ 健康牛市",
+      "body": "市场广度是本看板最核心的风控维度。指数创新高而 MA50/MA200 上方占比未能同步扩张，说明涨势高度集中于少数权重股——TQQQ、SOXL 的强势不过是拥挤交易的镜像，而非真实风险偏好的扩散。唯有指数上行与广度指标同步抬升，才意味着动能正从龙头向更广范围蔓延。\n\n当前首要观察的，是广度曲线能否延续修复态势，而非单只 ETF 的绝对涨幅。广度一旦转弱，高分品种亦需相应降权处置。"
+    }
+  ]
+}
