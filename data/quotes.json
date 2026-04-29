@@ -2107,5 +2107,36 @@
     "monthChange": 20.45,
     "source": "Nasdaq historical API",
     "asOf": "04/28/2026"
+  },
+  "NKE": {
+    "previousClose": 45.03,
+    "metrics": {
+      "price": 45.03,
+      "ema20": 46.3886,
+      "ema50": 51.065,
+      "ema200": 59.7906,
+      "momentum1m": -12.34,
+      "momentum3m": -28.63,
+      "drawdownFromHigh": 31.37,
+      "drawdownFromATH": 43.17,
+      "ema200Slope": -5.36,
+      "breakdownCount": 7,
+      "volatility": 42.82,
+      "macdHist": 0.5291,
+      "macd": -1.9424,
+      "macdSignal": -2.4715,
+      "rsi": 61.23,
+      "kdjK": 28.94,
+      "kdjD": 27.95,
+      "bollPosition": 0.5,
+      "gmmaBull": false,
+      "qiankunBull": false,
+      "breakout": false,
+      "relativeStrength": 4.2
+    },
+    "weekChange": -2.93,
+    "monthChange": -12.34,
+    "source": "Nasdaq historical API",
+    "asOf": "04/28/2026"
   }
 }
