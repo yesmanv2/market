@@ -219,11 +219,17 @@ function mergeStaticCatalog() {
       const { ticker } = item;
       if (existing.has(ticker)) return false;
       if (!isCleanTradable(item)) return false;
+      if (!hasVerifiedQuote(ticker)) return false;
       existing.add(ticker);
       return true;
     })
     .map(({ ticker, name, group, category }) => createCatalogTicker(ticker, name, group, category));
   state.data.funds.push(...generated);
+}
+
+function hasVerifiedQuote(ticker) {
+  const quote = state.quotes[ticker];
+  return typeof quote?.previousClose === "number" && Boolean(quote?.metrics);
 }
 
 function isCleanTradable({ ticker, name, category }) {
@@ -264,31 +270,7 @@ function createCatalogTicker(ticker, name, group, category = "Stock") {
     monthChange: momentum1m,
     price,
     generated: true,
-    metrics: null,
-    syntheticMetrics: {
-      price,
-      ema20,
-      ema50,
-      ema200,
-      momentum1m,
-      momentum3m,
-      drawdownFromHigh,
-      drawdownFromATH,
-      ema200Slope,
-      breakdownCount,
-      volatility,
-      macdHist: round1(momentum1m / 10),
-      macd: round1(momentum1m / 3),
-      macdSignal: round1(momentum1m / 4),
-      rsi,
-      kdjK: Math.max(20, Math.min(90, rsi + 6)),
-      kdjD: Math.max(20, Math.min(90, rsi - 2)),
-      bollPosition: Math.max(0.15, Math.min(0.92, 0.5 + momentum1m / 35)),
-      gmmaBull: price > ema20 && ema20 > ema50,
-      qiankunBull: price > ema50 && ema50 > ema200,
-      breakout: momentum1m > 8 && drawdownFromHigh < 8,
-      relativeStrength: Math.max(5, Math.min(98, 50 + momentum3m * 1.5))
-    }
+    metrics: null
   };
 }
 
@@ -842,14 +824,14 @@ function renderFunds() {
 }
 
 function formatScoreCell(fund, color) {
-  if (fund.pending) return `<span class="muted">待接入</span>`;
+  if (fund.pending) return `<span class="muted">未收录</span>`;
   if (fund.score === null) return `<span class="muted">—</span>`;
   return `<span class="score-pill" style="--score-color: ${color}">${fund.score}</span>`;
 }
 
 function buildTechnicalNote(fund) {
   if (fund.pending) {
-    return "未接入行情源，接入后自动计算 EMA/MACD/RSI/BOLL 等技术分。";
+    return "未收录：缺少真实昨收或历史K线评分。";
   }
   if (!fund.metrics) {
     return "缺少真实历史K线，暂不计算技术分。";
@@ -913,12 +895,12 @@ function buildTechnicalNote(fund) {
 
 function renderSearchNotice(visibleFunds) {
   if (!state.searchQuery) {
-    els.searchNotice.textContent = "默认显示当前分类 score 最高的 20 个；输入 ticker 可搜索全库。";
+    els.searchNotice.textContent = "默认显示已验证数据池中 score 最高的 20 个；只收录有真实昨收和历史K线评分的标的。";
     return;
   }
 
   if (visibleFunds.some((fund) => fund.pending)) {
-    els.searchNotice.textContent = `${state.searchQuery} 待接入行情源`;
+    els.searchNotice.textContent = `${state.searchQuery} 暂未纳入已验证数据池`;
     return;
   }
 
@@ -1000,11 +982,11 @@ function searchFunds(query) {
 function createPendingTicker(ticker) {
   return {
     ticker,
-    name: "待接入行情源",
-    group: "US Listed",
+    name: "未纳入已验证数据池",
+    group: "No verified data",
     category: "Stock",
     leverage: "1x",
-    score: 0,
+    score: null,
     weekChange: null,
     monthChange: null,
     price: null,
