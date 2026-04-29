@@ -830,6 +830,9 @@ function buildTechnicalNote(fund) {
   const ema50 = metrics.ema50 ?? metrics.ma50;
   const ema200 = metrics.ema200 ?? metrics.ma200;
   const notes = [];
+  if (metrics.shortHistory) {
+    notes.push(`历史样本较短(${metrics.historyDays}日)`);
+  }
 
   if (metrics.price > ema20 && ema20 > ema50 && ema50 > ema200) {
     notes.push("EMA 多头排列");
@@ -930,7 +933,7 @@ function getVisibleFunds() {
   if (state.activeFundTab === "Stocks") return pricedFunds.filter((fund) => fund.category === "Stock");
   if (state.activeFundTab === "ETFs") return pricedFunds.filter((fund) => fund.category.includes("ETF") || fund.category === "Benchmark" || fund.category === "Leveraged");
   if (state.activeFundTab === "Semis") return pricedFunds.filter((fund) => ["Semiconductors", "Semiconductor Equipment", "Optical / Networking", "Networking"].includes(fund.group));
-  if (state.activeFundTab === "Memory") return pricedFunds.filter((fund) => fund.group === "Memory / Storage" || ["EWY", "KORU"].includes(fund.ticker));
+  if (state.activeFundTab === "Memory") return pricedFunds.filter((fund) => fund.group === "Memory / Storage" || ["EWY", "KORU", "DRAM"].includes(fund.ticker));
   return pricedFunds;
 }
 
