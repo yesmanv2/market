@@ -204,6 +204,9 @@ function applyQuotes() {
     item.price = item.previousClose;
     if (typeof quote?.weekChange === "number") item.weekChange = quote.weekChange;
     if (typeof quote?.monthChange === "number") item.monthChange = quote.monthChange;
+    ["return1d", "return1w", "return1m", "return3m", "return6m", "return1y"].forEach((key) => {
+      if (typeof quote?.[key] === "number") item[key] = quote[key];
+    });
     if (item.generated) {
       item.metrics = quote?.metrics || null;
       if (quote?.metrics) item.generated = false;
@@ -813,8 +816,12 @@ function renderFunds() {
           <td>${formatScoreCell(fund, color)}</td>
           <td>${fund.group}</td>
           <td>${fund.leverage}</td>
-          <td class="${fund.weekChange >= 0 ? "positive" : "negative"}">${formatMaybePercent(fund.weekChange)}</td>
-          <td class="${fund.monthChange >= 0 ? "positive" : "negative"}">${formatMaybePercent(fund.monthChange)}</td>
+          ${formatReturnCell(fund.return1d)}
+          ${formatReturnCell(fund.return1w)}
+          ${formatReturnCell(fund.return1m)}
+          ${formatReturnCell(fund.return3m)}
+          ${formatReturnCell(fund.return6m)}
+          ${formatReturnCell(fund.return1y)}
           <td>${formatMaybePrice(fund.previousClose)}</td>
           <td>${buildTechnicalNote(fund)}</td>
         </tr>
@@ -996,6 +1003,11 @@ function createPendingTicker(ticker) {
 
 function compare(a, b) {
   const direction = state.sortDirection === "asc" ? 1 : -1;
+  const aMissing = a === null || a === undefined || a === "—";
+  const bMissing = b === null || b === undefined || b === "—";
+  if (aMissing && bMissing) return 0;
+  if (aMissing) return 1;
+  if (bMissing) return -1;
   if (typeof a === "number" && typeof b === "number") return (a - b) * direction;
   return String(a).localeCompare(String(b)) * direction;
 }
@@ -1022,6 +1034,10 @@ function formatPercent(value) {
 
 function formatMaybePercent(value) {
   return typeof value === "number" ? formatPercent(value) : "—";
+}
+
+function formatReturnCell(value) {
+  return `<td class="${value >= 0 ? "positive" : "negative"}">${formatMaybePercent(value)}</td>`;
 }
 
 function formatMaybePrice(value) {
